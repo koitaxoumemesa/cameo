@@ -21,7 +21,7 @@ mkdir -p "$WORKDIR/log"
 DMND_DB="$PWD/database/uniref/uniref90_201901b_full.dmnd"
 
 # 2. Singularity containers
-DIAMOND_CONTAINER="$PWD/database/humann3.9.sif"           # must have diamond ≥2.0.14
+DIAMOND_CONTAINER="$PWD/database/humann3.9.sif"           # must have diamond ≥2.0.14, I use one built for HUMAnN 3.9 which uses Diamond 2.0.14
 DBCAN_CONTAINER="$PWD/database/dbcan.sif"                 # contains run_dbcan + dependencies
 
 # 3. dbCAN3 database directory (already inside or bind-mounted)

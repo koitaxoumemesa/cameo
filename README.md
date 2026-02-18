@@ -1,6 +1,5 @@
 # Supplementary code for the paper: TITLE
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/scientificcomputing/example-paper/HEAD)
-![Docker Pulls](https://img.shields.io/docker/pulls/koitaxoumemesa/humann-cazymes)
 ![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/koitaxoumemesa/humann-cazymes/latest/total)
 
 This repository contains supplementary code for the paper:

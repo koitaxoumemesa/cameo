@@ -1,5 +1,6 @@
 # Supplementary code for the paper: Title of paper
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/scientificcomputing/example-paper/HEAD)
+![Docker Pulls](https://img.shields.io/docker/pulls/koitaxoumemesa/humann-cazymes)
 
 This repository contains supplementary code for the paper
 > Finsberg, H., Dokken, J. 2022.

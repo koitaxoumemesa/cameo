@@ -20,10 +20,12 @@ Provide the abstract of the paper
 
 See the pre-compiled utility mapping file here: [`dbcan_map_cazy_uniref90.txt.gz`](dbcan_map_cazy_uniref90.txt.gz)
 
-We also present a workflow to reproduce the HUMAnN-compatible utility mapping file to match UniRef90 proteins to CAZymes using dbcan4. The workflow is used to:
+We also present a workflow to reproduce the HUMAnN-compatible utility mapping file to match UniRef90 proteins to CAZymes using dbcan4. You can adjust the files used in the workflow below to create a utility mapping file for other databases (e.g., UniRef50) as well! 
+
+The workflow is used to:
 
 1. build a local dbCAN database,
-2. annotate UniRef90 proteins with dbCAN,
+2. annotate UniRef proteins with dbCAN,
 3. convert dbCAN annotations into a HUMAnN-compatible ID mapping.
 
 ## Additional requirements:
@@ -38,13 +40,15 @@ The workflow assumes you have a container for DIAMOND (≥v2.0.14). The 3.9 and 
 - [`parse_dbcan_to_humann_map.py`](README.parse_dbcan_to_humann_map.py.md): parses dbCAN `overview.txt` into HUMAnN mapping format.
 - [`parse_dbcan_to_humann_map.sh`](README.parse_dbcan_to_humann_map.sh.md): SLURM wrapper that runs the parser in Singularity.
 
-## Typical Order of Use
+## Typical Usage
 
 1. Update the local SLURM settings and directories for your system.
 2. Build the container with the dbcan_reads.def file to create the container to either run locally or on your HPC.
 3. Run `dbcan-db-setup.sh` once to build the dbCAN DB directory.
 4. Run `dbcan_cazy_build.sh` (and the generated array workflow if used) to produce merged `overview.txt` output.
 5. Run `parse_dbcan_to_humann_map.sh` to generate `dbcan_map_cazy_uniref90.txt.gz` for HUMAnN `--id-mapping`.
+
+See the individual documentation, above, for details on each step.
 
 ## Runtime Output Directories
 

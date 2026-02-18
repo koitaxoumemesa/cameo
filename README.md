@@ -5,56 +5,36 @@ This repository contains supplementary code for the paper
 > Finsberg, H., Dokken, J. 2022.
 > Title of paper, Journal of ..., volume, page, url
 
-
 ## Abstract
 Provide the abstract of the paper
 
-## Getting started
+# CAZy dbCAN Pipeline (`cazy_dbcan`)
 
-First install `uv`
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
-Then create a virtual environment and install dependencies
+This folder contains SLURM/Singularity scripts and a parser used to:
 
-```bash
-uv venv
-source .venv/bin/activate
-uv sync --locked --all-extras --dev
-```
+1. build a local dbCAN database,
+2. annotate UniRef90 proteins with dbCAN,
+3. convert dbCAN annotations into a HUMAnN-compatible ID mapping.
 
-We also provide a pre-build Docker image which can be used to run the the code in this repository. First thing you need to do is to ensure that you have [docker installed](https://docs.docker.com/get-docker/).
+## File Documentation
 
-To start an interactive docker container you can execute the following command
+- [`dbcan-db-setup.sh`](README.dbcan-db-setup.md): downloads and indexes dbCAN databases.
+- [`dbcan_cazy_build.sh`](README.dbcan_cazy_build.sh.md): orchestrates UniRef90 → dbCAN annotation workflow (currently prints merge instructions; earlier setup steps are commented).
+- [`dbcan_reads.def`](README.dbcan_reads.def.md): Singularity definition file for a dbCAN-focused container image.
+- [`parse_dbcan_to_humann_map.py`](README.parse_dbcan_to_humann_map.py.md): parses dbCAN `overview.txt` into HUMAnN mapping format.
+- [`parse_dbcan_to_humann_map.sh`](README.parse_dbcan_to_humann_map.sh.md): SLURM wrapper that runs the parser in Singularity.
 
-```bash
-docker run --rm -it ghcr.io/scientificcomputing/example-paper:latest
-```
+## Typical Order of Use
 
-### Pre-processing
-Add steps for pre-processing, e.g
+1. Run `dbcan-db-setup.sh` once to build the dbCAN DB directory.
+2. Run `dbcan_cazy_build.sh` (and the generated array workflow if used) to produce merged `overview.txt` output.
+3. Run `parse_dbcan_to_humann_map.sh` to generate `dbcan_map_cazy_uniref90.txt.gz` for HUMAnN `--id-mapping`.
 
-```
-cd code
-python3 pre-processing.py
-```
+## Runtime Output Directories
 
-### Running simulation
-Add steps for running simulations, e.g
+- `log/`: SLURM stdout/stderr logs.
+- `final_results/`: merged output artifacts such as combined dbCAN overview and details.
 
-```
-cd code
-python3 run_all.py
-```
-
-
-### Postprocessing
-Add steps for postprocessing / reproducing figures and tables in the paper, e.g
-
-```
-cd code
-python3 postprocess.py
-```
 
 ## Citation
 

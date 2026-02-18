@@ -1,0 +1,141 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%labels
+    Author SAF
+    Version 1.1 Dec 2025
+    Description dbCAN4 pipeline for carbohydrate-active enzyme annotation from raw reads
+
+%help
+    This container includes the dbCAN4 pipeline for CAZyme annotation from raw sequencing reads.
+    
+    Usage:
+        # Run full pipeline from raw reads
+        singularity exec dbcan4.sif run_dbcan <input_dir> <input_type> \
+            [--out_dir <output_dir>] [--db_dir <database_dir>] \
+            [--dia_cpu <cpus>] [--hmm_cpu <cpus>] [--tf_cpu <cpus>] \
+            [--stp_cpu <cpus>] [--cgc_dis <distance>] [--cgc_sig_genes <types>]
+        
+        # Input types: protein, prok, meta
+        # protein: protein FASTA sequences
+        # prok: prokaryotic nucleotide sequences (one genome per file)
+        # meta: metagenomic nucleotide sequences
+    
+    Documentation: https://dbcan.readthedocs.io/en/latest/
+
+%environment
+    export PATH=/opt/conda/envs/dbcan/bin:/opt/conda/bin:$PATH
+    export CONDA_DEFAULT_ENV=dbcan
+    export CONDA_PREFIX=/opt/conda/envs/dbcan
+    export PYTHONPATH=/opt/conda/envs/dbcan/lib/python3.9/site-packages:$PYTHONPATH
+    export LC_ALL=C.UTF-8
+    export LANG=C.UTF-8
+
+%post
+    # Update and install system dependencies
+    apt-get update && apt-get install -y \
+        wget \
+        curl \
+        git \
+        build-essential \
+        gcc \
+        g++ \
+        make \
+        cmake \
+        autoconf \
+        automake \
+        libtool \
+        pkg-config \
+        zlib1g-dev \
+        libbz2-dev \
+        liblzma-dev \
+        libcurl4-openssl-dev \
+        libssl-dev \
+        libncurses5-dev \
+        libncursesw5-dev \
+        libreadline-dev \
+        libsqlite3-dev \
+        libffi-dev \
+        unzip \
+        hmmer \
+        diamond-aligner \
+        prodigal \
+        && apt-get clean \
+        && rm -rf /var/lib/apt/lists/*
+
+    # Install Miniforge (conda-forge based, no TOS required)
+    cd /tmp
+    wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O miniforge.sh
+    bash miniforge.sh -b -p /opt/conda
+    rm miniforge.sh
+    export PATH=/opt/conda/bin:$PATH
+
+    # Configure conda
+    /opt/conda/bin/conda config --set always_yes true
+    /opt/conda/bin/conda config --set changeps1 no
+    /opt/conda/bin/conda config --set auto_update_conda false
+    /opt/conda/bin/conda config --set show_channel_urls true
+
+    # Initialize conda
+    /opt/conda/bin/conda init bash
+    . /opt/conda/etc/profile.d/conda.sh
+
+    # Accept conda terms of service by setting environment variable
+    export CONDA_ALWAYS_YES=true
+    
+    # Ensure only conda-forge and bioconda are used (Miniforge defaults to conda-forge)
+    conda config --add channels bioconda
+    conda config --set channel_priority strict
+    
+    # Create conda environment with Python 3.9 from conda-forge
+    conda create -n dbcan python=3.9 -y
+    conda activate dbcan
+
+    # Install dependencies in smaller batches to avoid segfault
+    # Batch 1: Core Python packages
+    conda install -c conda-forge -y \
+        biopython \
+        pandas \
+        scipy \
+        matplotlib \
+        seaborn \
+        natsort \
+        pip
+    
+    # Batch 2: Bioinformatics tools
+    conda install -c bioconda -y \
+        hmmer \
+        diamond \
+        prodigal \
+        fraggenescan \
+        pyrodigal
+
+    # Install dbcan via pip within the conda environment
+    pip install dbcan
+
+    # Verify installation
+    which run_dbcan || echo "WARNING: run_dbcan not found in PATH"
+    python -c "import dbcan; print('dbCAN version:', dbcan.__version__)" || echo "WARNING: dbcan Python module not found"
+
+    # Cleanup
+    conda clean -a -y
+    apt-get clean
+    rm -rf /var/lib/apt/lists/*
+
+%runscript
+    #!/bin/bash
+    source /opt/conda/etc/profile.d/conda.sh
+    conda activate dbcan
+    exec run_dbcan "$@"
+
+%test
+    # Test that key executables are available
+    #!/bin/bash
+    export PATH=/opt/conda/bin:$PATH
+    . /opt/conda/etc/profile.d/conda.sh
+    conda activate dbcan
+    which run_dbcan
+    which hmmscan
+    which diamond
+    which prodigal
+    run_dbcan --help

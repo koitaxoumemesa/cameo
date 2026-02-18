@@ -51,7 +51,9 @@ This folder contains SLURM/Singularity scripts and a parser used to:
   year = {2017}
 }
 ```
+## Funding
 
+Portions of this work were funded by the United States Department of Agriculture (USDA) National Insitute of Food and Agriculture and the National Institutes of Health (NIH) NIGMS. Its contents are solely the responsibility of the authors and do not necessarily represent the official views of the USDA or the NIH. This work was also supported, in part, by the [University of Nevada, Reno Agricultural Experiment Station](https://naes.unr.edu/) and the [University of Nevada, Reno Department of Nutrition](https://www.unr.edu/nutrition).
 
 ## Having issues
 If you have any troubles please file and issue in the GitHub repository.

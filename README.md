@@ -26,15 +26,15 @@ This folder contains SLURM/Singularity scripts and a parser used to:
 
 ## Typical Order of Use
 
-1. Run `dbcan-db-setup.sh` once to build the dbCAN DB directory.
-2. Run `dbcan_cazy_build.sh` (and the generated array workflow if used) to produce merged `overview.txt` output.
-3. Run `parse_dbcan_to_humann_map.sh` to generate `dbcan_map_cazy_uniref90.txt.gz` for HUMAnN `--id-mapping`.
+1. Update the local SLURM settings and directories for your system. Or, use the .def file to create the container and run locally.
+2. Run `dbcan-db-setup.sh` once to build the dbCAN DB directory.
+3. Run `dbcan_cazy_build.sh` (and the generated array workflow if used) to produce merged `overview.txt` output.
+4. Run `parse_dbcan_to_humann_map.sh` to generate `dbcan_map_cazy_uniref90.txt.gz` for HUMAnN `--id-mapping`.
 
 ## Runtime Output Directories
 
 - `log/`: SLURM stdout/stderr logs.
 - `final_results/`: merged output artifacts such as combined dbCAN overview and details.
-
 
 ## Citation
 

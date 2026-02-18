@@ -2,11 +2,11 @@
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/scientificcomputing/example-paper/HEAD)
 ![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/koitaxoumemesa/humann-cazymes/latest/total)
 
-This repository contains supplementary code for the paper:
+This repository contains supplementary code for the paper. If you use the utility mapping file, please cite our publication:
 > Bolino, M., Haththotuwe-Gamage , N., Frese. S.A. 2026.
 > TITLE, Journal of ..., volume, page, url
 
-Please also cite:
+Please also cite the following papers if you use the workflow or the pre-computed file:
 > Buchfink B, Reuter K, Drost HG, "Sensitive protein alignments at tree-of-life scale using DIAMOND", Nature Methods 18, 366–368 (2021). doi:10.1038/s41592-021-01101-x
 > 
 > Beghini, F, et al. "Integrating taxonomic, functional, and strain-level profiling of diverse microbial communities with bioBakery 3." elife 10 (2021): e65088. doi:10.7554/eLife.65088

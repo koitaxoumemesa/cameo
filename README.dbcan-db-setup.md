@@ -1,6 +1,6 @@
 # `dbcan-db-setup.sh`
 
-SLURM batch script to initialize a dbCAN database directory by downloading reference files and creating required indexes with tools inside a Singularity container.
+SLURM batch script to initialize a dbCAN database directory by downloading reference files and creating required indexes with tools inside a Singularity container. Swap out docker as needed. 
 
 ## Purpose
 

@@ -18,7 +18,7 @@ Provide the abstract of the paper
 
 # CAZy dbCAN Pipeline (`cazy_dbcan`)
 
-See the pre-compiled utility mapping file here: [`dbcan_map_cazy_uniref90.txt.gz`](dbcan_map_cazy_uniref90.txt.gz)
+See the pre-compiled utility mapping file here: [`dbcan_map_cazy_uniref90.txt.gz`](dbcan_map_cazy_uniref90.txt.gz). 
 
 We also present a workflow to reproduce the HUMAnN-compatible utility mapping file to match UniRef90 proteins to CAZymes using dbcan4. You can adjust the files used in the workflow below to create a utility mapping file for other databases (e.g., UniRef50) as well! 
 
@@ -30,7 +30,7 @@ The workflow is used to:
 
 ## Additional requirements:
 
-The workflow assumes you have a container for DIAMOND (≥v2.0.14). The 3.9 and later HUMAnN install uses this. 
+The workflow assumes you have a the necessary containers. See our [https://hub.docker.com/u/koitaxoumemesa](DockerHub) for the containers we used, the naming is kept consistent. The shell scripts are written for a SLURM-managed HPC environment, update them with your local variables before running. 
 
 ## File Documentation
 
@@ -70,7 +70,7 @@ See the individual documentation, above, for details on each step.
 ```
 ## Funding
 
-Portions of this work were funded by the United States Department of Agriculture (USDA) National Insitute of Food and Agriculture and the National Institutes of Health (NIH) NIGMS. Its contents are solely the responsibility of the authors and do not necessarily represent the official views of the USDA or the NIH. This work was also supported, in part, by the [University of Nevada, Reno Agricultural Experiment Station](https://naes.unr.edu/) and the [University of Nevada, Reno Department of Nutrition](https://www.unr.edu/nutrition).
+Portions of this work were funded by the United States Department of Agriculture (USDA) National Insitute of Food and Agriculture and the National Institutes of Health (NIH) NIGMS. Its contents are solely the responsibility of the authors and do not necessarily represent the official views of the USDA or the NIH. This work was also supported, in part, by the [University of Nevada, Reno Agricultural Experiment Station](https://naes.unr.edu/), the [University of Nevada, Reno College of Agriculture, Biotechnology, and Natural Resources](https://www.unr.edu/cabnr) and the [University of Nevada, Reno Department of Nutrition](https://www.unr.edu/nutrition).
 
 ## Having issues
 If you have any troubles please file and issue in the GitHub repository.

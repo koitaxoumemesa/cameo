@@ -30,7 +30,7 @@ The workflow is used to:
 
 ## Additional requirements:
 
-The workflow assumes you have a the necessary containers. See our [https://hub.docker.com/u/koitaxoumemesa](DockerHub) for the dbcan container we used. The [https://hub.docker.com/r/biobakery/humann](biobakery humann docker) was used (we called it humann3.9 here). The shell scripts are written for a SLURM-managed HPC environment, update them with your local variables before running. 
+The workflow assumes you have a the necessary containers. See our [https://hub.docker.com/u/koitaxoumemesa](DockerHub) for the dbcan container we used. The https://hub.docker.com/r/biobakery/humann container was used (we called it humann3.9 here). The shell scripts are written for a SLURM-managed HPC environment, update them with your local variables before running. 
 
 ## File Documentation
 

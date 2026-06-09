@@ -1,6 +1,6 @@
 # `dbcan-db-setup.sh`
 
-SLURM batch script to initialize a dbCAN database directory by downloading reference files and creating required indexes with tools inside a Singularity container. Swap out docker as needed. 
+SLURM batch script to initialize a dbCAN database directory by downloading reference files and creating required indexes with tools inside a Singularity container.
 
 ## Purpose
 
@@ -8,17 +8,16 @@ Prepares `${WORKDIR}/db` with the files needed by `run_dbcan` (HMM databases, Di
 
 ## Prerequisites
 
-- HPC with SLURM.
-- Environment modules available:
-  - `singularity`
+- HPC with SLURM. (Recommended)
 - Existing dbCAN container image path:
+		- See [dockerhub](https://hub.docker.com/repository/docker/koitaxoumemesa/dbcan) for container
   - `DBCAN_CONTAINER` (default: `$PWD/database/dbcan.sif`)
 - Write access to:
   - `WORKDIR` (default: `$PWD`)
 
 ## Inputs
 
-- No command-line arguments.
+- No command-line arguments. Add SLURM parameters as needed
 - Downloads remote dbCAN resources directly from dbCAN-hosted URLs.
 - Uses variables defined in-script:
   - `WORKDIR`
@@ -63,4 +62,4 @@ sbatch dbcan-db-setup.sh
 ## Notes
 
 - The script runs as a chained command sequence with `set -euo pipefail`; any failed download/indexing step stops the job.
-- If URLs or dbCAN versions change upstream, update the hardcoded filenames/URLs in the script.
+- If URLs or dbCAN versions change upstream, update the hardcoded filenames/URLs in the script. 

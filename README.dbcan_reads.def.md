@@ -2,6 +2,8 @@
 
 Singularity definition file for building a dbCAN-focused container image from Ubuntu 22.04.
 
+**Recommended**: pull directly from [dockerhub](https://hub.docker.com/repository/docker/koitaxoumemesa/dbcan)
+
 ## Purpose
 
 Builds an image that includes:
@@ -15,13 +17,7 @@ The image runscript executes `run_dbcan` directly.
 
 ## Build Inputs
 
-- Base image: `ubuntu:22.04`
-- Internet access at build time for:
-  - apt packages
-  - Miniforge installer
-  - Conda packages/channels
-  - `pip install dbcan`
-
+None
 ## Build Output
 
 - A Singularity image file (name chosen at build time, e.g., `dbcan.sif`).

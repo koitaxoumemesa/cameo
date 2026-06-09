@@ -27,11 +27,13 @@ The workflow is used to:
 1. build a local dbCAN database,
 2. annotate UniRef proteins with dbCAN,
 3. convert dbCAN annotations into a HUMAnN-compatible ID mapping.
+## Typical Usage
+
+5. Run `parse_dbcan_to_humann_map.sh` to generate `dbcan_map_cazy_uniref90.txt.gz` for HUMAnN `--id-mapping`.
 
 ## Additional requirements:
 
 The workflow assumes you have a the necessary containers. See [here](https://hub.docker.com/repository/docker/koitaxoumemesa/dbcan/general) for the dbcan container we used. The https://hub.docker.com/r/biobakery/humann container was used (we called it humann3.9 here). The shell scripts are written for a SLURM-managed HPC environment, update them with your local variables before running. 
-
 ## File Documentation
 
 - [`dbcan-db-setup.sh`](README.dbcan-db-setup.md): downloads and indexes dbCAN databases.
@@ -39,22 +41,10 @@ The workflow assumes you have a the necessary containers. See [here](https://hub
 - [`dbcan_reads.def`](README.dbcan_reads.def.md): Singularity definition file for a dbCAN-focused container image.
 - [`parse_dbcan_to_humann_map.py`](README.parse_dbcan_to_humann_map.py.md): parses dbCAN `overview.txt` into HUMAnN mapping format.
 - [`parse_dbcan_to_humann_map.sh`](README.parse_dbcan_to_humann_map.sh.md): SLURM wrapper that runs the parser in Singularity.
-
-## Typical Usage
-
-1. Update the local SLURM settings and directories for your system.
-2. Build the container with the dbcan_reads.def file to create the container to either run locally or on your HPC.
-3. Run `dbcan-db-setup.sh` once to build the dbCAN DB directory.
-4. Run `dbcan_cazy_build.sh` (and the generated array workflow if used) to produce merged `overview.txt` output.
-5. Run `parse_dbcan_to_humann_map.sh` to generate `dbcan_map_cazy_uniref90.txt.gz` for HUMAnN `--id-mapping`.
-
-See the individual documentation, above, for details on each step.
-
 ## Runtime Output Directories
 
-- `log/`: SLURM stdout/stderr logs.
+- `log/`: SLURM stdout/stderr logs. Check this as needed
 - `final_results/`: merged output artifacts such as combined dbCAN overview and details.
-
 ## Citation
 
 ```
@@ -74,6 +64,5 @@ Portions of this work were funded by the United States Department of Agriculture
 
 ## Having issues
 If you have any troubles please file and issue in the GitHub repository.
-
 ## License
-MIT
+GNU GPL

@@ -1,10 +1,10 @@
-# Supplementary code for the paper: TITLE
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/scientificcomputing/example-paper/HEAD)
+# CAMEO: A CAZyme Mapping Engine Optimized for HUMAnN
+
+---
 ![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/koitaxoumemesa/humann-cazymes/latest/total)
 
 This repository contains supplementary code for the paper. If you use the utility mapping file, please cite our publication:
-> Bolino, M., Haththotuwe-Gamage , N., Frese. S.A. 2026.
-> TITLE, Journal of ..., volume, page, url
+> Bolino, M. and Frese, S.A. 2026. "CAMEO: A CAZyme Mapping Engine Optimized for HUMAnN."
 
 Please also cite the following papers if you use the workflow or the pre-computed file:
 > Buchfink B, Reuter K, Drost HG, "Sensitive protein alignments at tree-of-life scale using DIAMOND", Nature Methods 18, 366–368 (2021). doi:10.1038/s41592-021-01101-x
@@ -13,14 +13,20 @@ Please also cite the following papers if you use the workflow or the pre-compute
 > 
 > Zheng, J., Ge, Q., Yan, Y., Zhang, X., Huang, L. and Yanbin Yin. Dbcan3: automated carbohydrate-active enzyme and substrate annotation. Nucleic acids research (2023): 51(W1), W115-W121. doi:10.1093/nar/gkad328
 
-## Abstract
-Provide the abstract of the paper
+# Abstract
+
+There are technical barriers to creating functional mapping databases and a dearth of validated databases that can be easily implemented by users. Here, we present CAMEO, a precomputed and validated protein map for carbohydrate active enzymes, as well as an approach to building new protein mapping files for use in HUMAnN. 
+
+The inspiration for this work comes from this post in the [Biobakery forums](https://forum.biobakery.org/t/how-to-do-cazy-gene-profiling/2669) and what we perceived to be a very low CAZyme mapping rate with the 2021 mapping file.   
+
+# Results summary
+
 
 # CAZy dbCAN Pipeline (`cazy_dbcan`)
 
-See the pre-compiled utility mapping file here: [`dbcan_map_cazy_uniref90.txt.gz`](dbcan_map_cazy_uniref90.txt.gz). 
+**TLDR**: Get the pre-compiled utility mapping file here: [`dbcan_map_cazy_uniref90.txt.gz`](dbcan_map_cazy_uniref90.txt.gz). 
 
-We also present a workflow to reproduce the HUMAnN-compatible utility mapping file to match UniRef90 proteins to CAZymes using dbcan4. You can adjust the files used in the workflow below to create a utility mapping file for other databases (e.g., UniRef50) as well! 
+We also present a workflow to reproduce the HUMAnN-compatible utility mapping file to match UniRef90 proteins to CAZymes using dbcan4. You can adjust the files used in the workflow below to create a utility mapping file for other databases (e.g., UniRef50) as well! Or, you can adapt this to build a new mapping file with alternative software (replacing dbcan with your classifier of choice).
 
 The workflow is used to:
 
@@ -29,8 +35,13 @@ The workflow is used to:
 3. convert dbCAN annotations into a HUMAnN-compatible ID mapping.
 ## Typical Usage
 
+1. Update the local SLURM settings and directories for your system.
+2. Pull the dbcan container from dockerhub ([koitaxoumemesa/dbcan](https://hub.docker.com/repository/docker/koitaxoumemesa/dbcan)) or build locally with the Singularity .def file.
+3. Run `dbcan-db-setup.sh` once to build the dbCAN DB directory.
+4. Run `dbcan_cazy_build.sh` (and the generated array workflow if used) to produce merged `overview.txt` output.
 5. Run `parse_dbcan_to_humann_map.sh` to generate `dbcan_map_cazy_uniref90.txt.gz` for HUMAnN `--id-mapping`.
 
+See the individual documentation below for details on each step.
 ## Additional requirements:
 
 The workflow assumes you have a the necessary containers. See [here](https://hub.docker.com/repository/docker/koitaxoumemesa/dbcan/general) for the dbcan container we used. The https://hub.docker.com/r/biobakery/humann container was used (we called it humann3.9 here). The shell scripts are written for a SLURM-managed HPC environment, update them with your local variables before running. 
@@ -48,14 +59,14 @@ The workflow assumes you have a the necessary containers. See [here](https://hub
 ## Citation
 
 ```
-@software{Lisa_My_Research_Software_2017,
-  author = {Lisa, Mona and Bot, Hew},
+@software{Bolino_CAMEO_2026,
+  author = {Bolino, Matthew and Steven A. Frese},
   doi = {10.5281/zenodo.1234},
-  month = {12},
-  title = {{My Research Software}},
-  url = {https://github.com/scientificcomputing/example-paper},
-  version = {2.0.4},
-  year = {2017}
+  month = {06},
+  title = CAMEO: A CAZyme Mapping Engine Optimized for HUMAnN}},
+  url = {https://github.com/koitaxoumemesa/cameo},
+  version = {0.1},
+  year = {2026}
 }
 ```
 ## Funding

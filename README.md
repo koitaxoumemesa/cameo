@@ -2,7 +2,7 @@
 
 CAMEO: A CAZyme Mapping Engine Optimized for HUMAnN
 --
-![](cameo.png)  
+![CAMEO logo](./cameo.jpg|166)
 
 ![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/koitaxoumemesa/humann-cazymes/latest/total)
 

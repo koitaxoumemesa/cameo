@@ -25,7 +25,7 @@ The inspiration for this work comes from this post in the [Biobakery forums](htt
 
 # Results summary
 
-![[figure_1.png]]
+<img src="./figure_1.png" alt="Results">
 **CAMEO generation workflow and CAZyme analysis.** (A) A schematic of CAMEO generation using the HUMAnN DIAMOND database and dbCAN3. (B) A comparison of shotgun metagenomes from _Bifidobacterium longum_ subsp. _infantis_ EVC001-colonized infants (mean relative abundance ~88%) mapped with either a genome-derived annotation for _B. infantis_, the CAMEO-build mapping file, or a previous version of a CAZyme mapping file (‘Original’). The PC1 axis is plotted here. (C) Mean differences between the CAMEO-derived and the ‘Original’ mapping file in relation to the genome-derived mapping file (‘genome-annotated’) is shown as a heatmap. (D-E) PCoA measured by Bray-Curtis comparing EVC001-colonized (~88% _B. infantis_ EVC001 relative abundance) vs control fecal samples (lacking _B. infantis_) using the Original or CAMEO mapping strategies, respectively.
 
 We used a previously circulated mapping file from 2021 (the ‘original’ mapping file), the _B. infantis_ ATCC15697 genome as a known source of CAZyme annotations to build a compatible CAZyme mapping file (the ‘genome-annotated’ mapping approach), and our CAMEO-derived mapping file. We first found that the proportion of reads from EVC001-colonized infants that were CAZyme-mapped with each strategy were 0.7%, 1.6%, and 5.3%, respectively.

@@ -29,7 +29,9 @@ The inspiration for this work comes from this post in the [Biobakery forums](htt
 # Results summary
 
 <img src="./figure_1.png" alt="Results">
-**CAMEO generation workflow and CAZyme analysis.** 
+
+### CAMEO generation workflow and CAZyme analysis.
+
 (A) A schematic of CAMEO generation using the HUMAnN DIAMOND database and dbCAN3. (B) A comparison of shotgun metagenomes from *Bifidobacterium longum* subsp. *infantis* EVC001-colonized infants (mean relative abundance ~88%) mapped with either a genome-derived annotation for *B. infantis*, the CAMEO-build mapping file, or a previous version of a CAZyme mapping file (‘Original’). The PC1 axis is plotted here. (C) Mean differences between the CAMEO-derived and the ‘Original’ mapping file in relation to the genome-derived mapping file (‘genome-annotated’) is shown as a heatmap. (D-E) PCoA measured by Bray-Curtis comparing EVC001-colonized (~88% *B. infantis* EVC001 relative abundance) vs control fecal samples (lacking *B. infantis*) using the Original or CAMEO mapping strategies, respectively.
 
 To validate CAMEO, we leveraged a shotgun metagenome dataset from age- and diet-matched infants colonized at high levels by *Bifidobacterium longum* subsp *. infantis* EVC001 (N = 29) as well as a control group lacking this organism (N = 31). We used [a previously circulated mapping file from 2021](https://forum.biobakery.org/t/how-to-do-cazy-gene-profiling/2669) (the ‘original’ mapping file), the *B. infantis* ATCC15697 genome as a known source of CAZyme annotations to build a compatible CAZyme mapping file (the ‘genome-annotated’ mapping approach), and our CAMEO-derived mapping file. We first found that the proportion of reads from EVC001-colonized infants that were CAZyme-mapped with each strategy were 0.7%, 1.6%, and 5.3%, respectively. Then, we compared results across these samples and found that the CAMEO-derived and genome-derived annotation strategies were most similar (**Figure 1B-C**). When we compared the *B. infantis* EVC001-colonized samples to the control samples (**Figure 1D-E**), we saw an improvement in CAZyme discrimination (R2 = 0.064 vs. 0.101) over to the original mapping file.

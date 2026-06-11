@@ -2,20 +2,24 @@
 
 CAMEO: A CAZyme Mapping Engine Optimized for HUMAnN
 --
-<img src="./cameo.jpg" alt="CAMEO logo" width="166">
+<p align="center">  
+<img src="./cameo.jpg" alt="CAMEO logo" width="166">  
+</p>
 
 ![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/koitaxoumemesa/humann-cazymes/latest/total)
 
-This repository contains supplementary code for the paper. If you use the utility mapping file, please cite our publication:
-
-> Bolino, M. and Frese, S.A. 2026. "CAMEO: A CAZyme Mapping Engine Optimized for HUMAnN."
-
-Please also cite the following papers if you use the workflow or the pre-computed file:
-> Buchfink B, Reuter K, Drost HG, "Sensitive protein alignments at tree-of-life scale using DIAMOND", Nature Methods 18, 366–368 (2021). doi:10.1038/s41592-021-01101-x
+> [!NOTE]
+> This repository contains supplementary code for the paper. If you use the utility mapping file, please cite our publication:
 > 
-> Beghini, F, et al. "Integrating taxonomic, functional, and strain-level profiling of diverse microbial communities with bioBakery 3." elife 10 (2021): e65088. doi:10.7554/eLife.65088
+> > Bolino, M. and Frese, S.A. 2026. "CAMEO: A CAZyme Mapping Engine Optimized for HUMAnN." Pending publication.
 > 
-> Zheng, J., Ge, Q., Yan, Y., Zhang, X., Huang, L. and Yanbin Yin. Dbcan3: automated carbohydrate-active enzyme and substrate annotation. Nucleic acids research (2023): 51(W1), W115-W121. doi:10.1093/nar/gkad328
+> Please also cite the following papers if you use the workflow or the pre-computed file:
+> 
+> > Buchfink B, Reuter K, Drost HG, "Sensitive protein alignments at tree-of-life scale using DIAMOND", Nature Methods 18, 366–368 (2021). doi:10.1038/s41592-021-01101-x
+> > 
+> > Beghini, F, et al. "Integrating taxonomic, functional, and strain-level profiling of diverse microbial communities with bioBakery 3." elife 10 (2021): e65088. doi:10.7554/eLife.65088
+> > 
+> > Zheng, J., Ge, Q., Yan, Y., Zhang, X., Huang, L. and Yanbin Yin. Dbcan3: automated carbohydrate-active enzyme and substrate annotation. Nucleic acids research (2023): 51(W1), W115-W121. doi:10.1093/nar/gkad328
 
 # Abstract
 
@@ -26,9 +30,19 @@ The inspiration for this work comes from this post in the [Biobakery forums](htt
 # Results summary
 
 <img src="./figure_1.png" alt="Results">
-**CAMEO generation workflow and CAZyme analysis.** (A) A schematic of CAMEO generation using the HUMAnN DIAMOND database and dbCAN3. (B) A comparison of shotgun metagenomes from _Bifidobacterium longum_ subsp. _infantis_ EVC001-colonized infants (mean relative abundance ~88%) mapped with either a genome-derived annotation for _B. infantis_, the CAMEO-build mapping file, or a previous version of a CAZyme mapping file (‘Original’). The PC1 axis is plotted here. (C) Mean differences between the CAMEO-derived and the ‘Original’ mapping file in relation to the genome-derived mapping file (‘genome-annotated’) is shown as a heatmap. (D-E) PCoA measured by Bray-Curtis comparing EVC001-colonized (~88% _B. infantis_ EVC001 relative abundance) vs control fecal samples (lacking _B. infantis_) using the Original or CAMEO mapping strategies, respectively.
+**CAMEO generation workflow and CAZyme analysis.** 
+(A) A schematic of CAMEO generation using the HUMAnN DIAMOND database and dbCAN3. (B) A comparison of shotgun metagenomes from *Bifidobacterium longum* subsp. *infantis* EVC001-colonized infants (mean relative abundance ~88%) mapped with either a genome-derived annotation for *B. infantis*, the CAMEO-build mapping file, or a previous version of a CAZyme mapping file (‘Original’). The PC1 axis is plotted here. (C) Mean differences between the CAMEO-derived and the ‘Original’ mapping file in relation to the genome-derived mapping file (‘genome-annotated’) is shown as a heatmap. (D-E) PCoA measured by Bray-Curtis comparing EVC001-colonized (~88% *B. infantis* EVC001 relative abundance) vs control fecal samples (lacking *B. infantis*) using the Original or CAMEO mapping strategies, respectively.
 
-We used a previously circulated mapping file from 2021 (the ‘original’ mapping file), the _B. infantis_ ATCC15697 genome as a known source of CAZyme annotations to build a compatible CAZyme mapping file (the ‘genome-annotated’ mapping approach), and our CAMEO-derived mapping file. We first found that the proportion of reads from EVC001-colonized infants that were CAZyme-mapped with each strategy were 0.7%, 1.6%, and 5.3%, respectively.
+To validate CAMEO, we leveraged a shotgun metagenome dataset from age- and diet-matched infants colonized at high levels by *Bifidobacterium longum* subsp *. infantis* EVC001 (N = 29) as well as a control group lacking this organism (N = 31). We used [a previously circulated mapping file from 2021](https://forum.biobakery.org/t/how-to-do-cazy-gene-profiling/2669) (the ‘original’ mapping file), the *B. infantis* ATCC15697 genome as a known source of CAZyme annotations to build a compatible CAZyme mapping file (the ‘genome-annotated’ mapping approach), and our CAMEO-derived mapping file. We first found that the proportion of reads from EVC001-colonized infants that were CAZyme-mapped with each strategy were 0.7%, 1.6%, and 5.3%, respectively. Then, we compared results across these samples and found that the CAMEO-derived and genome-derived annotation strategies were most similar (**Figure 1B-C**). When we compared the *B. infantis* EVC001-colonized samples to the control samples (**Figure 1D-E**), we saw an improvement in CAZyme discrimination (R2 = 0.064 vs. 0.101) over to the original mapping file.
+
+The metagenomic samples used here are available in the NCBI SRA under accession PRJNA390646 and can be referenced with these publications:
+
+> Casaburi, G. _et al._ Early-life gut microbiome modulation reduces the abundance of antibiotic-resistant bacteria. _Antimicrob. Resist. Infect. Control_ **8**, 131 (2019).
+> 
+> Frese, S. A. _et al._ Persistence of Supplemented Bifidobacterium longum subsp. infantis EVC001 in Breastfed Infants. _mSphere_ **2**, (2017).
+> 
+> Smilowitz, J. T. _et al._ Safety and tolerability of Bifidobacterium longum subspecies infantis EVC001 supplementation in healthy term breastfed infants: a phase I clinical trial. _BMC Pediatr._ **17**, 133 (2017). 
+
 # CAZy dbCAN Pipeline (`cazy_dbcan`)
 
 **TLDR**: Get the pre-compiled utility mapping file here: [`dbcan_map_cazy_uniref90.txt.gz`](dbcan_map_cazy_uniref90.txt.gz). 

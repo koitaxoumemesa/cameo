@@ -4,8 +4,6 @@ CAMEO: A CAZyme Mapping Engine Optimized for HUMAnN
 --
 <img src="./cameo.jpg" alt="CAMEO logo" width="166">
 
-![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/koitaxoumemesa/humann-cazymes/latest/total)
-
 This repository contains supplementary code for the paper. If you use the utility mapping file, please cite our publication:
 
 > Bolino, M. and Frese, S.A. 2026. "CAMEO: A CAZyme Mapping Engine Optimized for HUMAnN."

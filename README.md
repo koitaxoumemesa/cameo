@@ -39,7 +39,7 @@ The inspiration for this work comes from this post in the [Biobakery forums](htt
 
 	 `humann_regroup_table --input $TABLE --output $TABLE2 --custom dbcan_map_cazy_uniref90.txt.gz`
 	 
-	- `$TABLE` = gene/pathway table (tsv format)
+	- `$TABLE` = gene families table (tsv format)
 	- `$TABLE2` = regrouped gene/pathway table
 ## CAZy dbCAN Pipeline (`cazy_dbcan`)
 

@@ -7,6 +7,7 @@ CAMEO: A CAZyme Mapping Engine Optimized for HUMAnN
 </p>
 
 ![DOI: 10.5281/zenodo.21074017](https://zenodo.org/badge/DOI/10.5281/zenodo.21074017.svg)
+
 **TLDR**: Get the pre-compiled utility mapping file here: [`dbcan_map_cazy_uniref90.txt.gz`](./data/dbcan_map_cazy_uniref90.txt.gz) or with:
 
 `wget https://raw.githubusercontent.com/koitaxoumemesa/cameo/main/data/dbcan_map_cazy_uniref90.txt.gz`

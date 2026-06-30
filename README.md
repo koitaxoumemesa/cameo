@@ -6,6 +6,8 @@ CAMEO: A CAZyme Mapping Engine Optimized for HUMAnN
 <img src="./docs/cameo.jpg" alt="CAMEO logo" width="166">  
 </p>
 
+**TLDR**: Get the pre-compiled utility mapping file here: [`dbcan_map_cazy_uniref90.txt.gz`](./data/dbcan_map_cazy_uniref90.txt.gz). 
+
 
 > [!NOTE]
 > This repository contains supplementary code for the paper. If you use the utility mapping file, please cite our publication:
@@ -25,8 +27,6 @@ CAMEO: A CAZyme Mapping Engine Optimized for HUMAnN
 There are technical barriers to creating functional mapping databases and a dearth of validated databases that can be easily implemented by users. Here, we present CAMEO, a precomputed and validated protein map for carbohydrate active enzymes, as well as an approach to building new protein mapping files for use in HUMAnN. 
 
 The inspiration for this work comes from this post in the [Biobakery forums](https://forum.biobakery.org/t/how-to-do-cazy-gene-profiling/2669) and what we perceived to be a very low CAZyme mapping rate with the 2021 mapping file.   
-
-**TLDR**: Get the pre-compiled utility mapping file here: [`dbcan_map_cazy_uniref90.txt.gz`](./data/dbcan_map_cazy_uniref90.txt.gz). 
 
 # Results summary
 

@@ -3,7 +3,7 @@
 CAMEO: A CAZyme Mapping Engine Optimized for HUMAnN
 --
 <p align="center">  
-<img src="./cameo.jpg" alt="CAMEO logo" width="166">  
+<img src="./docs/cameo.jpg" alt="CAMEO logo" width="166">  
 </p>
 
 
@@ -28,7 +28,7 @@ The inspiration for this work comes from this post in the [Biobakery forums](htt
 
 # Results summary
 
-<img src="./figure_1.png" alt="Results">
+<img src="./data/figure_1.png" alt="Results">
 
 ### CAMEO generation workflow and CAZyme analysis.
 
@@ -46,7 +46,7 @@ The metagenomic samples used here are available in the NCBI SRA under accession 
 
 # CAZy dbCAN Pipeline (`cazy_dbcan`)
 
-**TLDR**: Get the pre-compiled utility mapping file here: [`dbcan_map_cazy_uniref90.txt.gz`](dbcan_map_cazy_uniref90.txt.gz). 
+**TLDR**: Get the pre-compiled utility mapping file here: [`dbcan_map_cazy_uniref90.txt.gz`](./data/dbcan_map_cazy_uniref90.txt.gz). 
 
 We also present a workflow to reproduce the HUMAnN-compatible utility mapping file to match UniRef90 proteins to CAZymes using dbcan4. You can adjust the files used in the workflow below to create a utility mapping file for other databases (e.g., UniRef50) as well! Or, you can adapt this to build a new mapping file with alternative software (replacing dbcan with your classifier of choice).
 
@@ -67,13 +67,13 @@ See the individual documentation below for details on each step.
 ## Additional requirements:
 
 The workflow assumes you have a the necessary containers. See [here](https://hub.docker.com/repository/docker/koitaxoumemesa/dbcan/general) for the dbcan container we used. The https://hub.docker.com/r/biobakery/humann container was used (we called it humann3.9 here). The shell scripts are written for a SLURM-managed HPC environment, update them with your local variables before running. 
-## File Documentation
+## File Documentation 
 
-- [`dbcan-db-setup.sh`](README.dbcan-db-setup.md): downloads and indexes dbCAN databases.
-- [`dbcan_cazy_build.sh`](README.dbcan_cazy_build.sh.md): orchestrates UniRef90 → dbCAN annotation workflow (currently prints merge instructions; earlier setup steps are commented).
-- [`dbcan_reads.def`](README.dbcan_reads.def.md): Singularity definition file for a dbCAN-focused container image.
-- [`parse_dbcan_to_humann_map.py`](README.parse_dbcan_to_humann_map.py.md): parses dbCAN `overview.txt` into HUMAnN mapping format.
-- [`parse_dbcan_to_humann_map.sh`](README.parse_dbcan_to_humann_map.sh.md): SLURM wrapper that runs the parser in Singularity.
+- [`dbcan-db-setup.sh`](./docs/README.dbcan-db-setup.md): downloads and indexes dbCAN databases.
+- [`dbcan_cazy_build.sh`](./docs/README.dbcan_cazy_build.sh.md): orchestrates UniRef90 → dbCAN annotation workflow (currently prints merge instructions; earlier setup steps are commented).
+- [`dbcan_reads.def`](./docs/README.dbcan_reads.def.md): Singularity definition file for a dbCAN-focused container image.
+- [`parse_dbcan_to_humann_map.py`](./docs/README.parse_dbcan_to_humann_map.py.md): parses dbCAN `overview.txt` into HUMAnN mapping format.
+- [`parse_dbcan_to_humann_map.sh`](./docs/README.parse_dbcan_to_humann_map.sh.md): SLURM wrapper that runs the parser in Singularity.
 ## Runtime Output Directories
 
 - `log/`: SLURM stdout/stderr logs. Check this as needed

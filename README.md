@@ -6,7 +6,8 @@ CAMEO: A CAZyme Mapping Engine Optimized for HUMAnN
 <img src="./docs/cameo.jpg" alt="CAMEO logo" width="166">  
 </p>
 
-**TLDR**: Get the pre-compiled utility mapping file here: [`dbcan_map_cazy_uniref90.txt.gz`](./data/dbcan_map_cazy_uniref90.txt.gz) or with
+**TLDR**: Get the pre-compiled utility mapping file here: [`dbcan_map_cazy_uniref90.txt.gz`](./data/dbcan_map_cazy_uniref90.txt.gz) or with:
+
 `wget https://raw.githubusercontent.com/koitaxoumemesa/cameo/main/data/dbcan_map_cazy_uniref90.txt.gz`
 
 
@@ -28,7 +29,19 @@ CAMEO: A CAZyme Mapping Engine Optimized for HUMAnN
 There are technical barriers to creating functional mapping databases and a dearth of validated databases that can be easily implemented by users. Here, we present CAMEO, a precomputed and validated protein map for carbohydrate active enzymes, as well as an approach to building new protein mapping files for use in HUMAnN. 
 
 The inspiration for this work comes from this post in the [Biobakery forums](https://forum.biobakery.org/t/how-to-do-cazy-gene-profiling/2669) and what we perceived to be a very low CAZyme mapping rate with the 2021 mapping file.   
-# CAZy dbCAN Pipeline (`cazy_dbcan`)
+## Quick and easy usage with your HUMAnN workflow:
+
+1. Get the mapping file:
+
+	`wget https://raw.githubusercontent.com/koitaxoumemesa/cameo/main/data/dbcan_map_cazy_uniref90.txt.gz`
+
+2.  Point to this file as the mapping file with the HUMAnN utility scripts:
+
+	 `humann_regroup_table --input $TABLE --output $TABLE2 --custom dbcan_map_cazy_uniref90.txt.gz`
+	 
+	- `$TABLE` = gene/pathway table (tsv format)
+	- `$TABLE2` = regrouped gene/pathway table
+## CAZy dbCAN Pipeline (`cazy_dbcan`)
 
 We also present a workflow to reproduce the HUMAnN-compatible utility mapping file to match UniRef90 proteins to CAZymes using dbcan4. You can adjust the files used in the workflow below to create a utility mapping file for other databases (e.g., UniRef50) as well! Or, you can adapt this to build a new mapping file with alternative software (replacing dbcan with your classifier of choice).
 
@@ -38,33 +51,21 @@ The workflow is used to:
 2. annotate UniRef proteins with dbCAN,
 3. convert dbCAN annotations into a HUMAnN-compatible ID mapping.
 
-## Quick and easy usage with your HUMAnN workflow:
-
-1. Get the mapping file:
-
-	`wget https://raw.githubusercontent.com/koitaxoumemesa/cameo/main/data/dbcan_map_cazy_uniref90.txt.gz`
-
-2.  Point to this file as the mapping file with the HUMAnN utility scripts:
-
-	 `humann_regroup_table --input $TABLE --output $TABLE2 --custom dbcan_map_cazy_uniref90.txt.gz
-	 
-	- `$TABLE` = gene/pathway table (tsv format)
-	- `$TABLE2` = regrouped gene/pathway table
 ## Typical Usage to reproduce the mapping file:
 
-1. Clone the Github
+4. Clone the Github
 
 	`git clone https://github.com/koitaxoumemesa/cameo.git`
 
-2. Update the local SLURM settings, filepaths, and directories for your system.
+5. Update the local SLURM settings, filepaths, and directories for your system.
    
-3. Pull the dbcan container from dockerhub ([koitaxoumemesa/dbcan](https://hub.docker.com/repository/docker/koitaxoumemesa/dbcan)).
+6. Pull the dbcan container from dockerhub ([koitaxoumemesa/dbcan](https://hub.docker.com/repository/docker/koitaxoumemesa/dbcan)).
    
-4. Run `dbcan-db-setup.sh` once to build the dbCAN DB directory.
+7. Run `dbcan-db-setup.sh` once to build the dbCAN DB directory.
    
-5. Run `dbcan_cazy_build.sh` (and the generated array workflow if used) to produce merged `overview.txt` output.
+8. Run `dbcan_cazy_build.sh` (and the generated array workflow if used) to produce merged `overview.txt` output.
    
-6. Run `parse_dbcan_to_humann_map.sh` to generate `dbcan_map_cazy_uniref90.txt.gz` for HUMAnN `--id-mapping`.
+9. Run `parse_dbcan_to_humann_map.sh` to generate `dbcan_map_cazy_uniref90.txt.gz` for HUMAnN `--id-mapping`.
 
 See the individual documentation below for details on each step.
 ## File Documentation 

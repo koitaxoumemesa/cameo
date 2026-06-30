@@ -6,6 +6,7 @@ CAMEO: A CAZyme Mapping Engine Optimized for HUMAnN
 <img src="./docs/cameo.jpg" alt="CAMEO logo" width="166">  
 </p>
 
+![DOI: 10.5281/zenodo.21074017](https://zenodo.org/badge/DOI/10.5281/zenodo.21074017.svg)
 **TLDR**: Get the pre-compiled utility mapping file here: [`dbcan_map_cazy_uniref90.txt.gz`](./data/dbcan_map_cazy_uniref90.txt.gz) or with:
 
 `wget https://raw.githubusercontent.com/koitaxoumemesa/cameo/main/data/dbcan_map_cazy_uniref90.txt.gz`
@@ -121,5 +122,5 @@ Portions of this work were funded by the United States Department of Agriculture
 ## Having issues
 If you have any troubles please file and issue in the GitHub repository.
 ## License
-GNU GPL
+GNU GPL v3
 

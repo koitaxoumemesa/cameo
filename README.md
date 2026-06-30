@@ -26,6 +26,8 @@ There are technical barriers to creating functional mapping databases and a dear
 
 The inspiration for this work comes from this post in the [Biobakery forums](https://forum.biobakery.org/t/how-to-do-cazy-gene-profiling/2669) and what we perceived to be a very low CAZyme mapping rate with the 2021 mapping file.   
 
+**TLDR**: Get the pre-compiled utility mapping file here: [`dbcan_map_cazy_uniref90.txt.gz`](./data/dbcan_map_cazy_uniref90.txt.gz). 
+
 # Results summary
 
 <img src="./data/figure_1.png" alt="Results">
@@ -45,8 +47,6 @@ The metagenomic samples used here are available in the NCBI SRA under accession 
 > Smilowitz, J. T. _et al._ Safety and tolerability of Bifidobacterium longum subspecies infantis EVC001 supplementation in healthy term breastfed infants: a phase I clinical trial. _BMC Pediatr._ **17**, 133 (2017). 
 
 # CAZy dbCAN Pipeline (`cazy_dbcan`)
-
-**TLDR**: Get the pre-compiled utility mapping file here: [`dbcan_map_cazy_uniref90.txt.gz`](./data/dbcan_map_cazy_uniref90.txt.gz). 
 
 We also present a workflow to reproduce the HUMAnN-compatible utility mapping file to match UniRef90 proteins to CAZymes using dbcan4. You can adjust the files used in the workflow below to create a utility mapping file for other databases (e.g., UniRef50) as well! Or, you can adapt this to build a new mapping file with alternative software (replacing dbcan with your classifier of choice).
 

@@ -50,13 +50,30 @@ The inspiration for this work comes from this post in the [Biobakery forums](htt
 
 <img src="./data/figure_1.png" alt="Results of analysis and validation" style="display: block; margin: 0 auto;">
 
-**CAMEO generation workflow and CAZyme analysis.** (A) A schematic of CAMEO generation using the HUMAnN DIAMOND database and dbCAN3. (B) A comparison of shotgun metagenomes from _Bifidobacterium longum_ subsp. _infantis_ EVC001-colonized infants (mean relative abundance ~88%) mapped with either a genome-derived annotation for _B. infantis_, the CAMEO-build mapping file, or a previous version of a CAZyme mapping file (‘Original’). The PC1 axis is plotted here. (C) Mean differences between the CAMEO-derived and the ‘Original’ mapping file in relation to the genome-derived mapping file (‘genome-annotated’) is shown as a heatmap. (D-E) PCoA measured by Bray-Curtis comparing EVC001-colonized (~88% _B. infantis_ EVC001 relative abundance) vs control fecal samples (lacking _B. infantis_) using the Original or CAMEO mapping strategies, respectively.
+**CAMEO generation workflow and CAZyme analysis.** (A) A schematic of CAMEO generation using the HUMAnN DIAMOND database and dbCAN3. (B) A comparison of shotgun metagenomes from _Bifidobacterium longum_ subsp. _infantis_ EVC001_-_colonized infants (mean relative abundance ~88%, N = 29) mapped with either a genome-derived annotation for _B. infantis_ CAZymes, the CAMEO-built mapping file, or a previous version of a CAZyme mapping file (‘Original’). (C) Mean differences between the CAMEO-derived and the ‘Original’ mapping file relative to the genome-derived mapping file (‘genome-annotated’) are shown, with values closer to zero indicating stronger mapping performance. Here, samples with high levels of _B. infantis_ (~88% mean abundance) appear to map more effectively with the CAMEO mapping file. (D-E) a principal coordinate plot (PCoA) comparing Bray-Curtis distances between EVC001-colonized (~88% _B. infantis_ EVC001 relative abundance, N = 29) and control infant fecal samples (lacking _B. infantis_, N = 31) using the Original (D) or CAMEO (E) mapping strategies, respectively. While the overall relationships between samples is generally preserved, we see more dispersal among control samples (grey) in the CAMEO-mapped figure, and a higher R$^2$ result from the PERMANOVA.
 
-We used a previously circulated mapping file from 2021 (the ‘original’ mapping file), the _B. infantis_ ATCC15697 genome as a known source of CAZyme annotations to build a compatible CAZyme mapping file (the ‘genome-annotated’ mapping approach), and our CAMEO-derived mapping file. We first found that the proportion of reads from EVC001-colonized infants that were CAZyme-mapped with each strategy were 0.7%, 1.6%, and 5.3%, respectively.
+#### Additional information about CAMEO's validation
+
+During peer-review, some of the questions we received from a Reviewer was whether the 'low' mapping rate could be a product of false positive mapping, whether the higher mapping rate was inherently good, and essentially how can we tell if the performance of the CAMEO mapping file is indeed 'better.' All of which are fair questions.
+
+To address these points, we felt it was worthwhile to add a summarized version of our broader findings to this repo for users to have a broader sense of why CAMEO is a useful tool.
+
+First, we chose to use this particular data set to test CAMEO because (1) it is real-world metagenomic sequencing data, from fecal samples, and (2) because the infants fed *B. infantis* in this dataset achieved uniformly high levels of this one organism (roughly 88% on average and even beyond 99% relative abundance in some cases). In contrast, this organism was absent from the infants that were not fed *B. infantis*. 
+
+We also have a well-annotated genome for this organism, and the genome is annotated directly in [CAZY.org](https://www.cazy.org/b828.html).  So, we were able to manually curate a ‘genome-annotated’ mapping file as a kind of 'ground truth' of 'known knowns.' For the *B. infantis*-colonized infants, this mapping file represents effectively all of the potential CAZymes in these samples. If you want to try it out on these samples, you can find it [here](./data/B_inf_GT_uniref90_CAZY.txt.gz).
+
+We found that the proportion of reads from EVC001-colonized infants that were CAZyme-mapped with each strategy were 0.7% (original file), 1.6% (our curated, genome-derived mapping file), and 5.3% (CAMEO), respectively, among the *B. infantis*-fed infants. Filtering the raw data to exclude other species didn't meaningfully improve these mapping rates. What you will notice though, is that the CAMEO and genome-annotated CAZYme abundance results are far more similar to each other than the original mapping file (See Panel B, above), and the samples from infants lacking *B. infantis* are more dispersed (Panel E) than the results from the original file (Panel D) - this is a product of the higher mapping rate among across the UniRef90 database. 
+
+While false positives are always a concern, we posit that false-positive/negatives in read mapping itself are inherent to the methods of HUMAnN itself – irrespective of the mapping file used – and is more likely to be consistent, or at least stochastic, across mapping files than differences in false positives. 
+
+The value that CAMEO offers is that we have transparently documented how this mapping file was made, using a robust method (dbCAN), and compared this to a manually-curated mapping file (our 'genome-annotated' mapping file). 
+
 
 # CAZy dbCAN Pipeline (`cazy_dbcan`)
 
-We also present a workflow to reproduce the HUMAnN-compatible utility mapping file to match UniRef90 proteins to CAZymes using dbcan4. You can adjust the files used in the workflow below to create a utility mapping file for other databases (e.g., UniRef50) as well! Or, you can adapt this to build a new mapping file with alternative software (replacing dbcan with your classifier of choice). We will plan to update the mapping file for future UniRef/HUMAnN updates as they are released.
+We also present a workflow to reproduce the HUMAnN-compatible utility mapping file to match UniRef90 proteins to CAZymes using dbcan4. You can adjust the files used in the workflow below to create a utility mapping file for other databases (e.g., UniRef50) as well! Or, you can adapt this to build a new mapping file with alternative software (replacing dbcan with your classifier of choice). 
+
+We will plan to update the mapping file for future UniRef/HUMAnN updates as they are released.
 
 The workflow is used to:
 
